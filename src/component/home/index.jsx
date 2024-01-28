@@ -9,6 +9,8 @@ import { FullFlex } from "../common/FullFlex";
 import { LocalShippingOutlined, PaidOutlined } from "@mui/icons-material";
 import IAcceptPayment from "./IAcceptPayment";
 import FeatureProduct from "./FeatureProduct";
+import NewArrival from "./NewArrival";
+import BestSeller from "./BestSeller";
 
 const Home = () => {
   return (
@@ -17,6 +19,8 @@ const Home = () => {
       <Box mx={5}>
         <IAcceptPayment />
         <FeatureProduct />
+        <NewArrival />
+        <BestSeller />
       </Box>
     </Box>
   );
