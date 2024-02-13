@@ -1,3 +1,4 @@
+"use client";
 import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
 import { Open_Sans, Poppins } from "next/font/google";
 

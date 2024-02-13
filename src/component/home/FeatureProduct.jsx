@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import CustomTabPanel from "../common/CustomTabPanel";
 import { FullFlex } from "../common/FullFlex";
 import { ProductCard } from "../common/ProductCard";
+import { ProductData } from "components/utils/productData";
 
 const FeatureProduct = () => {
   const [value, setValue] = useState(0);
@@ -30,15 +31,14 @@ const FeatureProduct = () => {
       >
         <Tab label={"Mobile"} {...a11yProps(0)} />
         <Tab label={"Laptop"} {...a11yProps(2)} />
-        <Tab label={"Watch"} {...a11yProps(1)} />
-        <Tab label={"Accessories"} {...a11yProps(2)} />
       </Tabs>
       <CustomTabPanel value={value} index={0}>
         <FullFlex gap={1}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {ProductData.filter((iphone) => iphone.category == "phone").map(
+            (data, index) => (
+              <ProductCard key={index} data={data} />
+            )
+          )}
         </FullFlex>
       </CustomTabPanel>
     </Box>

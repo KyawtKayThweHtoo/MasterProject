@@ -9,10 +9,7 @@ import theme from "./theme";
 export default function ThemeRegistry({ children }) {
   return (
     <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </NextAppDirEmotionCacheProvider>
   );
 }

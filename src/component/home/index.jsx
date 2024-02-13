@@ -19,8 +19,8 @@ const Home = () => {
       <Box mx={5}>
         <IAcceptPayment />
         <FeatureProduct />
-        <NewArrival />
-        <BestSeller />
+        {/*<NewArrival />
+  <BestSeller />*/}
       </Box>
     </Box>
   );

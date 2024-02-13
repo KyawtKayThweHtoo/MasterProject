@@ -32,9 +32,8 @@ const ProfileHeading = () => {
         </Typography>
       </Box>
 
-      <div>
-        <Button
-          id="basic-button"
+      <>
+        <Box
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
@@ -44,15 +43,12 @@ const ProfileHeading = () => {
           <IconButton>
             <KeyboardArrowDown />
           </IconButton>
-        </Button>
+        </Box>
         <Menu
           id="basic-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
         >
           <MenuItem sx={{ fontSize: "15px" }} onClick={handleClose}>
             Jo March
@@ -73,7 +69,7 @@ const ProfileHeading = () => {
             Sign Out
           </MenuItem>
         </Menu>
-      </div>
+      </>
     </>
   );
 };
