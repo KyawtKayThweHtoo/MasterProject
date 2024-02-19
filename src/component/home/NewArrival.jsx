@@ -2,6 +2,7 @@ import React from "react";
 import { FullFlex } from "../common/FullFlex";
 import { Box, Card, Typography } from "@mui/material";
 import { ProductCard } from "../common/ProductCard";
+import { arrivalData } from "components/utils/productData";
 
 const NewArrival = () => {
   return (
@@ -14,9 +15,9 @@ const NewArrival = () => {
         </Box>
         <Card sx={{ p: 2, flex: 0.8 }}>
           <FullFlex justifyContent={"flex-start"} gap={2}>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {arrivalData.map((data, index) => (
+              <ProductCard data={data} key={index} />
+            ))}
           </FullFlex>
         </Card>
       </FullFlex>

@@ -12,7 +12,6 @@ import {
 } from "components/redux/appStore";
 
 const AddToCartItem = ({ data }) => {
-  console.log("data", data);
   const dispatch = useDispatch();
   return (
     <FullFlex gap={1} mb={1.5}>

@@ -5,17 +5,20 @@ import AddToCartItem from "components/component/addToCart/AddToCartItem";
 import { FullFlex } from "components/component/common/FullFlex";
 import { emptyCart } from "components/redux/appStore";
 import { calculateTotal } from "components/utils/calculateTotal";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const AddToCartPage = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { cartProduct } = useSelector((state) => state.app);
   const total = calculateTotal(cartProduct);
 
   return (
     <>
-      {cartProduct.length && (
+      {cartProduct.length ? (
         <FullFlex sx={{ mt: 4, gap: 1 }} alignItems={"flex-start"}>
           <Box flex={0.7}>
             <Card sx={{ p: 1, mb: 1 }}>
@@ -59,6 +62,24 @@ const AddToCartPage = () => {
             </Card>
           </Box>
         </FullFlex>
+      ) : (
+        <Box>
+          <FullFlex justifyContent={"center"} flexDirection={"column"}>
+            <Image
+              src={"/images/emptyCart.jpg"}
+              alt="iphone"
+              width={300}
+              height={300}
+              objectFit="cover"
+            />
+            <Typography variant="h6" mb={2}>
+              There are no item in the cart
+            </Typography>
+            <Button variant="contained" onClick={() => router.push("/")}>
+              Continue Shopping
+            </Button>
+          </FullFlex>
+        </Box>
       )}
     </>
   );

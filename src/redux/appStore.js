@@ -14,7 +14,7 @@ export const appSlice = createSlice({
     },
     deleteCartProduct: (state, action) => {
       state.cartProduct = state.cartProduct.filter(
-        (data) => data?.cartId != action.payload.cartId
+        (data) => data?.id != action.payload.id
       );
     },
     addCartProductQty: (state, action) => {

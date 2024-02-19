@@ -42,3 +42,16 @@ export const ProductData = [
     storage: Storage,
   },
 ];
+export const arrivalData = [
+  {
+    id: 1,
+    image: "/images/iphone15promax.jpeg",
+    name: "Iphone 15 Pro Max",
+    description:
+      "The iPhone 15 Pro Max display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.69 inches diagonally (actual viewable area is less).",
+    price: 1999,
+    category: "phone",
+    color: iphoneColor,
+    storage: Storage,
+  },
+];

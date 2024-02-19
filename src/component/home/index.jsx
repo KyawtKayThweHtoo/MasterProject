@@ -1,12 +1,7 @@
 "use client";
 import React from "react";
-import Carousel from "react-material-ui-carousel";
-import CarouselItem from "./CarouselItem";
-import { carouselImages } from "components/utils/carouselImage";
 import ICarousel from "./ICarousel";
-import { Box, Stack, Typography } from "@mui/material";
-import { FullFlex } from "../common/FullFlex";
-import { LocalShippingOutlined, PaidOutlined } from "@mui/icons-material";
+import { Box } from "@mui/material";
 import IAcceptPayment from "./IAcceptPayment";
 import FeatureProduct from "./FeatureProduct";
 import NewArrival from "./NewArrival";
@@ -19,6 +14,7 @@ const Home = () => {
       <Box mx={5}>
         <IAcceptPayment />
         <FeatureProduct />
+        <NewArrival />
         {/*<NewArrival />
   <BestSeller />*/}
       </Box>
