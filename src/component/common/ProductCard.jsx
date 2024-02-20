@@ -9,14 +9,16 @@ export const ProductCard = ({ data }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const theme = useTheme();
   return (
-    <Card variant="outlined" sx={{ backgroundColor: "white" }}>
-      <Image
-        src={data?.image}
-        alt="iphone"
-        width={300}
-        height={100}
-        objectFit="cover"
-      />
+    <Card variant="outlined" sx={{ backgroundColor: "white", m: 1 }}>
+      <FullFlex justifyContent={"center"}>
+        <Image
+          src={data?.image}
+          alt="iphone"
+          width={300}
+          height={100}
+          objectFit="cover"
+        />
+      </FullFlex>
       <Box sx={{ p: 1 }}>
         <Typography variant="h6">{data?.name}</Typography>
         <FullFlex>

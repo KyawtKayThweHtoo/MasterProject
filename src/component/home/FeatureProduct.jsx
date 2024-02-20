@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Grid, Tab, Tabs, Typography } from "@mui/material";
 import { orange } from "@mui/material/colors";
 import React, { useState } from "react";
 import CustomTabPanel from "../common/CustomTabPanel";
@@ -33,13 +33,15 @@ const FeatureProduct = () => {
         <Tab label={"Laptop"} {...a11yProps(2)} />
       </Tabs>
       <CustomTabPanel value={value} index={0}>
-        <FullFlex gap={1}>
+        <Grid container>
           {ProductData.filter((iphone) => iphone.category == "phone").map(
             (data, index) => (
-              <ProductCard key={index} data={data} />
+              <Grid item xs={4} key={index}>
+                <ProductCard data={data} />
+              </Grid>
             )
           )}
-        </FullFlex>
+        </Grid>
       </CustomTabPanel>
     </Box>
   );

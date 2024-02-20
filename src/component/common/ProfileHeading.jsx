@@ -10,10 +10,18 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
+import {
+  emptyCart,
+  setIsLoggedIn,
+  setLoggedInUserData,
+} from "components/redux/appStore";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProfileHeading = () => {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { loggedInUserData } = useSelector((state) => state.app);
   const [openConfirm, setOpenConfirm] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -22,13 +30,18 @@ const ProfileHeading = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleLogout = () => {
+    dispatch(setIsLoggedIn(false));
+    dispatch(setLoggedInUserData(null));
+    dispatch(emptyCart());
+  };
 
   return (
     <>
-      <Avatar>J</Avatar>
+      <Avatar>{loggedInUserData?.username?.[0]}</Avatar>
       <Box>
         <Typography variant="h6" color="black">
-          Hi, Jo March
+          Hi, {loggedInUserData?.username}
         </Typography>
       </Box>
 
@@ -51,9 +64,9 @@ const ProfileHeading = () => {
           onClose={handleClose}
         >
           <MenuItem sx={{ fontSize: "15px" }} onClick={handleClose}>
-            Jo March
+            {loggedInUserData?.username}
           </MenuItem>
-          <MenuItem onClick={handleClose}>jomarch@gmail.com</MenuItem>
+          <MenuItem onClick={handleClose}>{loggedInUserData?.email}</MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
@@ -62,7 +75,7 @@ const ProfileHeading = () => {
             Settings
           </MenuItem>
           <Divider />
-          <MenuItem>
+          <MenuItem onClick={handleLogout}>
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>

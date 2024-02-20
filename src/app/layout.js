@@ -3,6 +3,8 @@ import ThemeRegistry from "../styles/ThemeRegistry";
 import AppBarLayout from "components/component/common/AppBarLayout";
 import { Box, CssBaseline } from "@mui/material";
 import ReduxProvider from "components/component/common/ReduxProvider";
+import Footer from "components/component/common/Footer";
+import MessageSnackBar from "components/component/common/MessageSnackBar";
 
 export default function RootLayout({ children }) {
   return (
@@ -10,7 +12,7 @@ export default function RootLayout({ children }) {
       <ReduxProvider>
         <ThemeRegistry>
           <body>
-            <Box sx={{ display: "flex" }}>
+            <Box sx={{ display: "flex", mb: 7.5, minHeight: "85.5vh" }}>
               <CssBaseline />
               <AppBarLayout />
 
@@ -25,6 +27,8 @@ export default function RootLayout({ children }) {
                 {children}
               </Box>
             </Box>
+            <MessageSnackBar />
+            <Footer />
           </body>
         </ThemeRegistry>
       </ReduxProvider>

@@ -4,26 +4,35 @@ import { FullFlex } from "./FullFlex";
 import { AddCircle, Circle, Close, RemoveCircle } from "@mui/icons-material";
 import Image from "next/image";
 import { ProductData } from "components/utils/productData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCartProduct } from "components/redux/appStore";
 import { uuid } from "uuidv4";
+import IModal from "./IModal";
+import LoginCheckForm from "./form/LoginCheckForm";
 
 const ProductDetail = ({ onClose, id }) => {
   const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.app);
+  const [modal, setModal] = useState(false);
   const productDetail = ProductData?.find((data) => data?.id == id);
   const [qty, setQty] = useState(1);
   const [color, setColor] = useState(productDetail?.color[0]);
   const [storage, setStorage] = useState(productDetail?.storage[0]);
+
   const handleAddToCart = () => {
-    const data = {
-      ...productDetail,
-      qty: qty,
-      color: color.name,
-      storage: storage,
-      cartId: uuid,
-    };
-    dispatch(addToCartProduct(data));
-    onClose();
+    if (isLoggedIn) {
+      const data = {
+        ...productDetail,
+        qty: qty,
+        color: color.name,
+        storage: storage,
+        cartId: uuid,
+      };
+      dispatch(addToCartProduct(data));
+      onClose();
+    } else {
+      setModal(true);
+    }
   };
   return (
     <Box
@@ -139,6 +148,9 @@ const ProductDetail = ({ onClose, id }) => {
           Add to Cart
         </Button>
       </FullFlex>
+      <IModal open={modal} handleClose={() => setModal(false)}>
+        <LoginCheckForm handleClose={() => setModal(false)} />
+      </IModal>
     </Box>
   );
 };

@@ -1,6 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cartProduct: [],
+  isLoggedIn: false,
+  loggedInUserData: null,
+  userData: [
+    {
+      id: 1,
+      username: "Jo March",
+      email: "jomarch@gmail.com",
+      password: "Apple@123",
+    },
+  ],
+  messageSnackBar: {
+    isOpen: false,
+    severity: "success", // "success" || "error" || "warning" || "info"
+    message: "",
+  },
 };
 export const appSlice = createSlice({
   name: "app",
@@ -37,6 +52,27 @@ export const appSlice = createSlice({
       lang = { ...action.payload, qty: action.payload.qty - 1 };
       state.cartProduct[index] = lang;
     },
+    setIsLoggedIn: (state, action) => {
+      state.isLoggedIn = action.payload;
+    },
+    setLoggedInUserData: (state, action) => {
+      state.loggedInUserData = action.payload;
+    },
+    registerUser: (state, action) => {
+      if (state.userData.length) {
+        state.userData = [...state.userData, action.payload];
+      } else {
+        state.userData = [action.payload];
+      }
+    },
+    openSnackbar: (state, action) => {
+      state.messageSnackBar.isOpen = true;
+      state.messageSnackBar.severity = action.payload.severity;
+      state.messageSnackBar.message = action.payload.message;
+    },
+    closeSnackBar: (state) => {
+      state.messageSnackBar.isOpen = false;
+    },
   },
 });
 export const {
@@ -45,5 +81,10 @@ export const {
   deleteCartProduct,
   addCartProductQty,
   removeCartProductQty,
+  setIsLoggedIn,
+  setLoggedInUserData,
+  registerUser,
+  closeSnackBar,
+  openSnackbar,
 } = appSlice.actions;
 export default appSlice.reducer;

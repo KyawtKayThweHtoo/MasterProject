@@ -1,5 +1,12 @@
 "use client";
-import { AppBar, Badge, IconButton, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Badge,
+  Box,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 
 import { ShoppingCart } from "@mui/icons-material";
 import { FullFlex } from "./FullFlex";
@@ -8,10 +15,13 @@ import ProfileHeading from "./ProfileHeading";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { calculateQty } from "components/utils/calculateTotal";
+import AuthButton from "./AuthButton";
 
 const AppBarLayout = () => {
   const router = useRouter();
-  const { cartProduct } = useSelector((state) => state.app);
+  const { cartProduct, isLoggedIn, loggedInUserData } = useSelector(
+    (state) => state.app
+  );
   return (
     <AppBar
       position="fixed"
@@ -41,7 +51,7 @@ const AppBarLayout = () => {
               <ShoppingCart />
             </Badge>
           </IconButton>
-          <ProfileHeading />
+          {isLoggedIn ? <ProfileHeading /> : <AuthButton />}
         </FullFlex>
       </FullFlex>
     </AppBar>
