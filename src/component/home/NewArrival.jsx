@@ -15,7 +15,7 @@ const NewArrival = () => {
         </Box>
         <Card sx={{ p: 2, flex: 0.8 }}>
           <FullFlex justifyContent={"flex-start"} gap={2}>
-            {arrivalData.map((data, index) => (
+            {arrivalData.slice(0, 3).map((data, index) => (
               <ProductCard data={data} key={index} />
             ))}
           </FullFlex>

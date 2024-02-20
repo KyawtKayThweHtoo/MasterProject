@@ -43,6 +43,17 @@ const FeatureProduct = () => {
           )}
         </Grid>
       </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <Grid container>
+          {ProductData.filter((iphone) => iphone.category == "computer").map(
+            (data, index) => (
+              <Grid item xs={4} key={index}>
+                <ProductCard data={data} />
+              </Grid>
+            )
+          )}
+        </Grid>
+      </CustomTabPanel>
     </Box>
   );
 };
